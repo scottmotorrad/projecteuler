@@ -13,7 +13,7 @@ int problem1() {
 	return count;
 }
 
-//Sum of even Fibonacci  numbers
+// Sum of even Fibonacci  numbers
 int problem2() {
 	int fib = 1;
 	int fibNm1 = 1;
@@ -30,6 +30,7 @@ int problem2() {
 	return sum;
 }
 
+// Largest prime factor
 uint64 problem3() {
 	uint64 compositeNumber = 600851475143ULL;
 	uint64 largestFactor = 0ULL;
@@ -42,6 +43,7 @@ uint64 problem3() {
 	return largestFactor;
 }
 
+// Largest palindrome number
 int problem4() {
 	int product = 0;
 	int largestPalidromeNumber = 0;
@@ -57,9 +59,21 @@ int problem4() {
 	return largestPalidromeNumber;
 }
 
+// Smallest multiple of 1,2,3...20
+int problem5() {
+	bool multiple = false;
+	for (int i = 20; !multiple; i += 2) {
+		multiple = true;
+		for (int j = 1; j < 21 && multiple; j++)
+			multiple = multiple && i % j == 0;
+		if (multiple)
+			return i;
+	}
+}
+
 int main()
 {
-	std::cout << "Solution: " << problem4() << std::endl;
+	std::cout << "Solution: " << problem5() << std::endl;
 	return 0;
 }
 
