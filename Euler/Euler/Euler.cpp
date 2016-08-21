@@ -1,7 +1,6 @@
 #include <iostream>
 #include "math_helpers.h"
-
-typedef unsigned long long uint64;
+#include <cstdint>
 
 // Sum of multiples of 3 and 5 < 1000
 int problem1() {
@@ -31,10 +30,10 @@ int problem2() {
 }
 
 // Largest prime factor
-uint64 problem3() {
-	uint64 compositeNumber = 600851475143ULL;
-	uint64 largestFactor = 0ULL;
-	for (uint64 i = 3ULL; i <= compositeNumber; i += 2ULL) {
+int64_t problem3() {
+	int64_t compositeNumber = 600851475143LL;
+	int64_t largestFactor = 0LL;
+	for (int64_t i = 3LL; i <= compositeNumber; i += 2LL) {
 		while (compositeNumber % i == 0) {
 			compositeNumber /= i;
 			largestFactor = i;
@@ -72,10 +71,10 @@ int problem5() {
 }
 
 // Sum square difference
-uint64 problem6() {
-	uint64 sumOfSquares = 0;
-	uint64 squareofSum = 0;
-	for (uint64 i = 1ULL; i <= 100ULL; i++) {
+int64_t problem6() {
+	int64_t sumOfSquares = 0;
+	int64_t squareofSum = 0;
+	for (int64_t i = 1LL; i <= 100LL; i++) {
 		squareofSum += i;
 		sumOfSquares += i * i;
 	}
@@ -104,7 +103,7 @@ int problem7() {
 	return result;
 }
 
-uint64 problem8() {
+int64_t problem8() {
 	char c[1001] = 
 		"73167176531330624919225119674426574742355349194934"
 		"96983520312774506326239578318016984801869478851843"
@@ -130,23 +129,25 @@ uint64 problem8() {
 	for (int i = 0; i < 1000; i++) {
 		n[i] = (int)c[i] - 48;
 	}
-	uint64 maxProduct = 0;
+	int64_t maxProduct = 0;
 	int maxJ;
 	for (int i = 0; i < 1000 - 12; i++) {
 		int c = 1;
-		uint64 product = (uint64)n[i];
+		int64_t product = (int64_t)n[i];
 		for (int j = 1; j < 13; j++) {
-			product *= (uint64)n[j + i];
+			product *= (int64_t)n[j + i];
 			c++;
 			maxJ = j + i;
 		}
-		maxProduct = max<uint64>(maxProduct, product);
+		maxProduct = max<int64_t>(maxProduct, product);
 	}
 	return maxProduct;
 }
 
 int main()
 {
+	std::cout << "Solution: " << problem3() << std::endl;
+	std::cout << "Solution: " << problem6() << std::endl;
 	std::cout << "Solution: " << problem8() << std::endl;
 	return 0;
 }
