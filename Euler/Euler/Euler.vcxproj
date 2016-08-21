@@ -139,6 +139,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Euler.cpp" />
+    <ClCompile Include="math_helpers.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="math_helpers.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
