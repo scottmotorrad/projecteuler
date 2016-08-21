@@ -19,5 +19,6 @@ bool isPalindromeNumber(int p) {
 		if (str[i] != str[digits - (i + 1)])
 			return false;
 	}
+	delete[] str;
 	return true;
 }

@@ -83,9 +83,30 @@ uint64 problem6() {
 	return squareofSum - sumOfSquares;
 }
 
+// 10001st prime
+int problem7() {
+	int* primes = new int[10001];
+	primes[0] = 2;
+	primes[1] = 3;
+	int primeCounter = 2;
+	for (int i = 5; primeCounter < 10001; i += 2) {
+		bool isPrime = true;
+		for (int j = 1; j <= primeCounter && isPrime; j++) {
+			isPrime = isPrime && i % primes[j] != 0;
+		}
+		if (isPrime) {
+			primes[primeCounter] = i;
+			primeCounter++;
+		}
+	}
+	int result = primes[10000];
+	delete[] primes;
+	return result;
+}
+
 int main()
 {
-	std::cout << "Solution: " << problem6() << std::endl;
+	std::cout << "Solution: " << problem7() << std::endl;
 	return 0;
 }
 
