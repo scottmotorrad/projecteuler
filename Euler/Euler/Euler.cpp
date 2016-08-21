@@ -71,9 +71,21 @@ int problem5() {
 	}
 }
 
+// Sum square difference
+uint64 problem6() {
+	uint64 sumOfSquares = 0;
+	uint64 squareofSum = 0;
+	for (uint64 i = 1ULL; i <= 100ULL; i++) {
+		squareofSum += i;
+		sumOfSquares += i * i;
+	}
+	squareofSum *= squareofSum;
+	return squareofSum - sumOfSquares;
+}
+
 int main()
 {
-	std::cout << "Solution: " << problem5() << std::endl;
+	std::cout << "Solution: " << problem6() << std::endl;
 	return 0;
 }
 
