@@ -1,5 +1,7 @@
 #include <iostream>
 
+typedef unsigned long long uint64;
+
 // Sum of multiples of 3 and 5 < 1000
 int problem1() {
 	int count = 0;
@@ -27,9 +29,21 @@ int problem2() {
 	return sum;
 }
 
+uint64 problem3() {
+	uint64 compositeNumber = 600851475143ULL;
+	uint64 largestFactor = 0ULL;
+	for (uint64 i = 3ULL; i <= compositeNumber; i += 2ULL) {
+		while (compositeNumber % i == 0) {
+			compositeNumber /= i;
+			largestFactor = i;
+		}
+	}
+	return largestFactor;
+}
+
 int main()
 {
-	std::cout << "Solution: " << problem2() << std::endl;
+	std::cout << "Solution: " << problem3() << std::endl;
 	return 0;
 }
 
