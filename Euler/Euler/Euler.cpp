@@ -41,9 +41,48 @@ uint64 problem3() {
 	return largestFactor;
 }
 
+
+
+bool isPalindromeNumber(int p) {
+	int digits = 1;
+	int counter = 10;
+	while (p > counter) {
+		counter *= 10;
+		digits++;
+	}
+	char* str = new char[digits];
+	counter = 0;
+	while (p > 0) {
+		str[counter] = (char)((p % 10) + 48);
+		p /= 10;
+		counter++;
+	}
+
+	for (int i = 0; i < digits / 2; i++) {
+		if (str[i] != str[digits - (i + 1)])
+			return false;
+	}
+	return true;
+}
+
+int problem4() {
+	int product = 0;
+	int largestPalidromeNumber = 0;
+	for (int factor1 = 999; factor1 > 99; factor1--) {
+		for (int factor2 = factor1; factor2 > 99; factor2--) {
+			product = factor1 * factor2;
+			if (product > largestPalidromeNumber && isPalindromeNumber(product)) {
+				largestPalidromeNumber = product;
+				factor2 = 0; //exit the inner loop
+			}
+		}
+	}
+	return largestPalidromeNumber;
+}
+
 int main()
 {
-	std::cout << "Solution: " << problem3() << std::endl;
+	std::cout << "Solution: " << problem4() << std::endl;
 	return 0;
 }
 
