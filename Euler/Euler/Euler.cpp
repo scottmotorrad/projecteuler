@@ -91,7 +91,7 @@ int problem7() {
 	for (int i = 5; primeCounter < 10001; i += 2) {
 		bool isPrime = true;
 		for (int j = 1; j <= primeCounter && isPrime; j++) {
-			isPrime = isPrime && i % primes[j] != 0;
+			isPrime = i % primes[j] != 0;
 		}
 		if (isPrime) {
 			primes[primeCounter] = i;
@@ -144,16 +144,38 @@ int64_t problem8() {
 // Special Pythagorean triplet where a + b + c == 1000
 int64_t problem9() {
 	for (int64_t a = 1; a < 332; a++) // 332 + 333 + 334 == 999
-		for (int64_t b = a + 1; b < 500; b++) // 1 + 499 + 5000 == 1000
+		for (int64_t b = a + 1; b < 500; b++) // 1 + 499 + 500 == 1000
 			for (int64_t c = b + 1; c < 997; c++) // 1 + 2 + 997 = 1000
 				if (a + b + c == 1000 && isSpecialPythagoreanTriplet(a, b, c))
 					return a * b * c;
 	return -1;
 }
 
+// Sums of primes less than 2 million
+// This implementation is awful figure out how prime sieves work and rewrite this
+int64_t problem10() {
+	int64_t* primes = new int64_t[200000];
+	primes[0] = 2LL;
+	int primeCounter = 1LL;
+	int64_t result = 2LL;
+	for (int64_t i = 3LL; i < 2000000LL; i += 2LL) {
+		bool isPrime = true;
+		for (int j = 1; j <= primeCounter && isPrime; j++) {
+			isPrime = i % primes[j] != 0;
+		}
+		if (isPrime) {
+			primes[primeCounter] = i;
+			primeCounter++;
+			result += i;
+		}
+	}
+	delete[] primes;
+	return result;
+}
+
 int main()
 {
-	std::cout << "Solution: " << problem9() << std::endl;
+	std::cout << "Solution: " << problem10() << std::endl;
 	return 0;
 }
 
