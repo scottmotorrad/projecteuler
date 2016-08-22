@@ -131,14 +131,10 @@ int64_t problem8() {
 		n[i] = (int)c[i] - 48;
 	}
 	int64_t maxProduct = 0;
-	int maxJ;
 	for (int i = 0; i < 1000 - 12; i++) {
-		int c = 1;
 		int64_t product = (int64_t)n[i];
 		for (int j = 1; j < 13; j++) {
 			product *= (int64_t)n[j + i];
-			c++;
-			maxJ = j + i;
 		}
 		maxProduct = max<int64_t>(maxProduct, product);
 	}
