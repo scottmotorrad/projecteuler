@@ -103,6 +103,7 @@ int problem7() {
 	return result;
 }
 
+// Largest product of consecutive integers
 int64_t problem8() {
 	char c[1001] = 
 		"73167176531330624919225119674426574742355349194934"
@@ -144,11 +145,19 @@ int64_t problem8() {
 	return maxProduct;
 }
 
+// Special Pythagorean triplet where a + b + c == 1000
+int64_t problem9() {
+	for (int64_t a = 1; a < 332; a++) // 332 + 333 + 334 == 999
+		for (int64_t b = a + 1; b < 500; b++) // 1 + 499 + 5000 == 1000
+			for (int64_t c = b + 1; c < 997; c++) // 1 + 2 + 997 = 1000
+				if (a + b + c == 1000 && isSpecialPythagoreanTriplet(a, b, c))
+					return a * b * c;
+	return -1;
+}
+
 int main()
 {
-	std::cout << "Solution: " << problem3() << std::endl;
-	std::cout << "Solution: " << problem6() << std::endl;
-	std::cout << "Solution: " << problem8() << std::endl;
+	std::cout << "Solution: " << problem9() << std::endl;
 	return 0;
 }
 

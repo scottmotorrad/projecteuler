@@ -22,3 +22,9 @@ bool isPalindromeNumber(int p) {
 	delete[] str;
 	return true;
 }
+
+bool isSpecialPythagoreanTriplet(int64_t a, int64_t b, int64_t c) {
+	if (a >= b || b >= c)
+		return false;
+	return (a*a) + (b*b) == c*c;
+}
